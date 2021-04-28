@@ -27,7 +27,7 @@ public class ProdutoService {
 		return repo.findAll();
 	}
 	
-	public Produto save(Produto produto) {
+	public Produto insert(Produto produto) {
 		return repo.save(produto);
 	}
 	
