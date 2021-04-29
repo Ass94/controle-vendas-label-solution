@@ -1,4 +1,4 @@
-package br.com.lable.solution;
+package br.com.lable.solution.config;
 
 import java.text.ParseException;
 

@@ -31,7 +31,7 @@ public class Produto implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataVenda;
 
-	private Status status;
+	private Integer status;
 
 	public Produto() {
 
@@ -46,7 +46,7 @@ public class Produto implements Serializable {
 		this.valorVenda = valorVenda;
 		this.dataCompra = dataCompra;
 		this.dataVenda = dataVenda;
-		this.status = status;
+		this.status = (status == null) ? null : status.getCodigo();
 	}
 
 	public Integer getId() {
@@ -106,11 +106,11 @@ public class Produto implements Serializable {
 	}
 
 	public Status getStatus() {
-		return status;
+		return Status.toEnum(status);
 	}
 
 	public void setStatus(Status status) {
-		this.status = status;
+		this.status = status.getCodigo();
 	}
 
 	@Override

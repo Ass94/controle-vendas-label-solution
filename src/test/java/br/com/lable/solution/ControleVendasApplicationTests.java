@@ -8,6 +8,7 @@ class ControleVendasApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
