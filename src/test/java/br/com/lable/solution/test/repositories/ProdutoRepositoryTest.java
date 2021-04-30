@@ -5,11 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Optional;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -25,8 +22,7 @@ public class ProdutoRepositoryTest {
 	
 	@Autowired
 	private ProdutoRepository repo;
-	@Rule
-	private ExpectedException thrown = ExpectedException.none();
+
 	
 	@Test
 	public void insertShouldPersistData() throws ParseException {
