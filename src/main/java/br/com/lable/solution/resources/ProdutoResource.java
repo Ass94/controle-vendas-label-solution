@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.lable.solution.domain.Produto;
 import br.com.lable.solution.service.ProdutoService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/produtos")
@@ -28,12 +29,14 @@ public class ProdutoResource {
 	@Autowired
 	private ProdutoService service;
 	
+	@ApiOperation("Busca todos")
 	@GetMapping
 	public ResponseEntity<List<Produto>> findAll() {
 		List<Produto> lista = service.findAll();
 		return ResponseEntity.ok().body(lista);
 	}
 	
+	@ApiOperation("Insere")
 	@PostMapping
 	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
 		Produto obj = service.insert(produto);
@@ -42,30 +45,35 @@ public class ProdutoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation("Buscar por id")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Produto> findById(@PathVariable Integer id) {
 		Produto produto = service.findById(id);
 		return ResponseEntity.ok().body(produto);
 	}
 	
+	@ApiOperation("Atualiza")
 	@PutMapping
 	public ResponseEntity<Produto> upadate(@RequestBody Produto produto) {
 		service.update(produto);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation("Remove")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation("Busca por nome")
 	@GetMapping(value = "/nome")
 	public ResponseEntity<List<Produto>> findByNome(@RequestParam String nome) {
 		List<Produto> produtos = service.findByNome(nome);
 		return ResponseEntity.ok().body(produtos);
 	}
 	
+	@ApiOperation("Ordena por data")
 	@GetMapping(value = "/ordenar")
 	public ResponseEntity<List<Produto>> orderByDataVenda() {
 		List<Produto> produtos = service.orderByDataVenda();
